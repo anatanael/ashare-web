@@ -1,0 +1,75 @@
+@font-face {
+  font-family: "Fira Code";
+  src: url("../fonts/FiraCode/FiraCode-Regular.ttf") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MinhaFonte";
+  src: url("../fonts/FiraCode/FiraCode-Bold.ttf") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MinhaFonte";
+  src: url("../fonts/FiraCode/FiraCode-Light.ttf") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Fire Code", monospace;
+}
+
+:root {
+  --primary: #0b141a;
+  --secondary: #202c33;
+  --input: #2a3942;
+  --danger: #da4141;
+  --color-scroll: #2a3942;
+
+  --main-font: "Fira Code", monospace;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+button {
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
+input {
+  outline: none;
+}
+
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-scroll);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #005c4d;
+}
+
+@media (max-width: 575.98px) {
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
+}

@@ -1,0 +1,59 @@
+.container {
+  background-color: var(--primary);
+  min-height: 100%;
+  max-height: 100vh;
+
+  word-break: break-word;
+
+  display: grid;
+
+  grid-template-rows: 1fr 64px;
+  grid-template-areas:
+    "main"
+    "bottom";
+}
+
+.main {
+  grid-area: main;
+
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  gap: 8px;
+  align-items: flex-end;
+  overflow: auto;
+}
+
+.bottom {
+  grid-area: bottom;
+
+  display: flex;
+  padding: 8px;
+  gap: 8px;
+
+  background-color: var(--secondary);
+}
+
+.inputMessage {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  padding: 8px;
+
+  background-color: var(--input);
+  color: #fff;
+  border: none;
+}
+
+.btnSendMessage {
+  background-color: var(--primary);
+  border: none;
+  color: #fff;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.btnSendMessage svg {
+  font-size: 20px;
+}
