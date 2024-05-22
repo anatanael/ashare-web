@@ -1,0 +1,26 @@
+@import "src/global/global";
+
+.container {
+  display: grid;
+  overflow: hidden;
+
+  background-color: $primary-color;
+
+  padding: 12px;
+  border-radius: 0;
+  align-items: center;
+}
+
+.messageInput {
+  padding: 8px;
+  max-height: 300px;
+}
+
+.sendIcon {
+  font-size: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $accent-color;
+  outline: none;
+}

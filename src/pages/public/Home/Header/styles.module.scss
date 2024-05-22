@@ -1,0 +1,15 @@
+@import "src/global/global";
+
+.container {
+  background-color: $primary-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.titleHeader {
+  font-weight: bolder;
+  text-decoration: none;
+  font-size: 18px;
+  color: $text-color;
+}

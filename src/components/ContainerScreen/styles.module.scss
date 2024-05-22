@@ -1,0 +1,15 @@
+.middleScreen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.middleScreen > :first-child {
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.fullMobile {
+  height: calc(var(--vh, 1vh) * 100) !important;
+}

@@ -1,0 +1,51 @@
+@import "src/global/global";
+
+.page {
+  padding: 16px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+
+  max-width: 100%;
+
+  padding: 16px;
+  border-radius: 8px;
+  background-color: $primary-color;
+
+  overflow-y: auto;
+}
+
+.imgLogin {
+  max-width: 60%;
+  height: auto;
+  max-height: 400px;
+  display: none;
+}
+
+.createAccountText {
+  margin-top: 24px;
+  color: $text-color;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: $min-width-lg) {
+  .container {
+    gap: 32px;
+    padding: 64px;
+  }
+
+  .imgLogin {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: $max-width-sm) {
+  .container,
+  .formLogin {
+    width: 100%;
+  }
+}

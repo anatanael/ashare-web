@@ -1,0 +1,31 @@
+@import "src/global/global";
+
+.listMenu {
+  position: absolute;
+  top: 32px;
+  right: 0;
+  border: 2px solid $bg-primary;
+  background-color: $primary-color;
+  width: 160px;
+  border-radius: 8px;
+  font-size: 16px;
+  z-index: 3;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow: hidden;
+}
+
+.listMenu > * {
+  cursor: pointer;
+}
+
+.listMenu * {
+  color: $text-color;
+  padding: 8px;
+}
+
+.listMenu *:hover {
+  background-color: rgb($bg-primary, 0.5);
+}

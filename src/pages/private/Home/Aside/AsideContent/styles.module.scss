@@ -1,0 +1,102 @@
+@import "src/global/global";
+
+.container {
+  height: 100%;
+  padding: 8px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.loadingCategories {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.wrapSearch {
+  position: relative;
+}
+
+.inputSearch {
+  height: 48px;
+  padding: 8px;
+}
+
+.iconSearch,
+.iconSearchClose {
+  font-size: 24px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $text-color;
+  opacity: 50%;
+}
+
+.iconSearch {
+  left: 8px;
+}
+
+.iconSearchClose {
+  cursor: pointer;
+  right: 8px;
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 0;
+
+  flex: 1;
+  overflow-y: auto;
+}
+
+.category {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.category.selected {
+  background-color: rgba($bg-primary, 0.5);
+}
+
+.category:hover {
+  background-color: rgba($bg-primary, 0.5);
+}
+
+.categoryContent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.iconCategory {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.nameCategory {
+  color: $text-color;
+}
+
+.wrapIconDeleteCategory {
+  justify-self: flex-end;
+  display: none;
+}
+
+.category:hover .wrapIconDeleteCategory {
+  display: block;
+}
+
+.iconDeleteCategory {
+  font-size: 24px;
+  color: rgba(255, 0, 0, 0.4);
+}
