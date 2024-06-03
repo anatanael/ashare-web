@@ -8,8 +8,6 @@ import styles from "./styles.module.scss";
 import { CardNote } from "@/components/CardMedia";
 import { TYPE_MEDIA } from "@/global/constants";
 
-// import { TYPE_MEDIA } from "@/global/constants";
-
 export const MessageDisplay = ({
   notes,
   notifyDelete,
@@ -37,6 +35,7 @@ export const MessageDisplay = ({
               <ListItem style={styleListItem}>
                 <CardNote
                   id={item.id}
+                  date={item.createdAt}
                   text={item.text}
                   notifyDelete={notifyDelete}
                   typeMedia={TYPE_MEDIA.NOTE}
