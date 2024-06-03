@@ -26,7 +26,8 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:test": "env-cmd -f .env.testing react-app-rewired build"
   },
   "eslintConfig": {
     "extends": [
@@ -53,6 +54,7 @@
     "@eslint/js": "^9.1.1",
     "babel-plugin-module-resolver": "^5.0.2",
     "customize-cra": "^1.0.0",
+    "env-cmd": "^10.1.0",
     "eslint": "^8.57.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^9.1.0",
