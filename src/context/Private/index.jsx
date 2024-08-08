@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-import { getCategoriesApi } from "@/api/userCategory";
+import { getCategoriesApi } from "@/api/category";
 
 const PrivateContext = createContext();
 

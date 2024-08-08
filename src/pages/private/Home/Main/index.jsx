@@ -7,7 +7,7 @@ import {
   createNoteByCategory,
   deleteNotePrivate,
   getNotesByCategory,
-} from "@/api/userNote";
+} from "@/api/note";
 import { MessageComposer } from "@/components/MessageComposer";
 import { MessageDisplay } from "@/components/MessageDisplay";
 import { usePrivateContext } from "@/context/Private";

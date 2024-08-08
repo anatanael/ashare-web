@@ -3,8 +3,9 @@ import { IS_DEV } from "@/global/constants";
 
 export const getCategoriesApi = async () => {
   try {
-    const response = await api.get("/user/category");
-    const responseData = response.data;
+    const response = await api.get("/category");
+
+    const responseData = response.data.categories;
     if (Array.isArray(responseData)) {
       return responseData;
     }
@@ -19,7 +20,7 @@ export const getCategoriesApi = async () => {
 
 export const deleteCategoryApi = async (idCategory) => {
   try {
-    await api.delete(`/user/category/${idCategory}`);
+    await api.delete(`/category/${idCategory}`);
     return true;
   } catch (err) {
     if (IS_DEV) {
@@ -32,15 +33,9 @@ export const deleteCategoryApi = async (idCategory) => {
 
 export const saveCategoryApi = async (title) => {
   try {
-    const response = await api.post("/user/category", { title });
-    return response.data;
-    // const response = await api.post("/user/category", formData, {
-    //   headers: {
-    //     "Content-Type": "multipart/form-data",
-    //   },
-    // });
+    const response = await api.post("/category", { title });
 
-    // return response.data;
+    return response.data.category;
   } catch (err) {
     if (IS_DEV) {
       console.log(err);

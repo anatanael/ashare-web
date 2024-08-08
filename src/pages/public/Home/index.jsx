@@ -4,11 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Header } from "./Header";
 import styles from "./styles.module.scss";
 
-import {
-  createNotePublic,
-  deleteNotePublic,
-  getNotesPublic,
-} from "@/api/userNote";
+import { createNotePublic, deleteNotePublic, getNotesPublic } from "@/api/note";
 import { ContainerScreen } from "@/components/ContainerScreen";
 import { MessageComposer } from "@/components/MessageComposer";
 import { MessageDisplay } from "@/components/MessageDisplay";

@@ -59,8 +59,8 @@ export const Login = () => {
 
       return;
     }
-
     const { accessToken, user } = dataLogin;
+
     handleLoginSuccess(accessToken, user);
 
     toast.success("Login realizado com sucesso", { id: TOAST_LOGIN });

@@ -42,3 +42,13 @@ Principais Funcionalidades 🛠️
 <p align="center">
   <img width="100%" hspace="10" vspace="10" target="_blank" src="https://github.com/anatanael/ashare-web/assets/51931199/5a6fe792-a20d-4c96-bb6c-e73f308713ff"/>
 </p>
+
+## Tecnologias utilizadas no backend
+
+- ReactJS + Docker
+
+## Instalação
+
+```bash
+docker-compose up
+```

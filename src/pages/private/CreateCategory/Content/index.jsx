@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import styles from "./styles.module.scss";
 
-import { saveCategoryApi, updateCategoryImageApi } from "@/api/userCategory";
+import { saveCategoryApi, updateCategoryImageApi } from "@/api/category";
 import { ImageWithFallback } from "@/components/ImageWithFallback";
 import { usePrivateContext } from "@/context/Private";
 import { DEFAULT_IMG_CATEGORY } from "@/global/constants";

@@ -35,7 +35,7 @@ export const handleLoginSuccess = async (token, user) => {
   const nameUser = user.name || "";
 
   localStorage.setItem(LS_KEY_ACCESS_TOKEN, token);
-  api.defaults.headers.common["Authorization"] = token;
+  api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   Cookies.set("name", nameUser, { expires: 1 });
 };
 

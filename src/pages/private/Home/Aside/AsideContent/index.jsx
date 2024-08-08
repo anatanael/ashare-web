@@ -13,7 +13,7 @@ import {
 } from "./animation.styles";
 import styles from "./styles.module.scss";
 
-import { deleteCategoryApi } from "@/api/userCategory";
+import { deleteCategoryApi } from "@/api/category";
 import { ImageWithFallback } from "@/components/ImageWithFallback";
 import { usePrivateContext } from "@/context/Private";
 import { DEFAULT_IMG_CATEGORY } from "@/global/constants";
