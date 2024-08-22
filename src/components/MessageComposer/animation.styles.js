@@ -1,9 +1,12 @@
 export const styleShowBtnSend = {
   opacity: 1,
+  display: "block",
+  left: "0px",
 };
-
 export const styleHideBtnSend = {
   opacity: 0,
+  display: "none",
+  left: "50px",
 };
 
 export const styleContainerShowBtnSend = {
@@ -14,4 +17,14 @@ export const styleContainerShowBtnSend = {
 export const styleContainerHideBtnSend = {
   gridTemplateColumns: "1fr 0px",
   gap: "0px",
+};
+
+export const styleShowAreaEmoji = {
+  opacity: "1",
+  left: "8px",
+};
+
+export const styleHideAreaEmoji = {
+  opacity: "0",
+  left: "-500px",
 };

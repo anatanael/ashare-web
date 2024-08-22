@@ -8,7 +8,7 @@ export const EmojiPickerCustom = ({ show, onEmojiClick }) => {
         onEmojiClick(emoji);
       }}
       theme="dark"
-      searchPlaceHolder="Pesquisar..."
+      searchDisabled
       emojiStyle={"native"}
       previewConfig={{
         showPreview: false,

@@ -5,7 +5,9 @@ import { animated, useSpring } from "react-spring";
 import {
   styleContainerHideBtnSend,
   styleContainerShowBtnSend,
+  styleHideAreaEmoji,
   styleHideBtnSend,
+  styleShowAreaEmoji,
   styleShowBtnSend,
 } from "./animation.styles";
 import styles from "./styles.module.scss";
@@ -29,6 +31,10 @@ export const MessageComposer = ({
   );
   const btnSendStyle = useSpring(
     messageInputTrim ? styleShowBtnSend : styleHideBtnSend,
+  );
+
+  const emojiAreaStyle = useSpring(
+    showEmojiContainer ? styleShowAreaEmoji : styleHideAreaEmoji,
   );
 
   const handleSendNote = async (messageInput) => {
@@ -90,30 +96,37 @@ export const MessageComposer = ({
       className={classNameContainer}
       style={{ ...containerStyle }}
       ref={containerRef}
+      onMouseLeave={() => setShowEmojiContainer(false)}
     >
       <div className={styles.messageContainer}>
-        <div className={styles.emojiContainer}>
-          <EmojiPickerCustom
-            show={showEmojiContainer}
-            onEmojiClick={(emoji) =>
-              handleChangeTextarea(`${messageInput}${emoji}`)
-            }
-          />
+        <div className={styles.emojiArea}>
+          <span className="emojiButton">
+            {!showEmojiContainer && (
+              <IoHappyOutline
+                className={styles.emojiIcon}
+                onClick={() => setShowEmojiContainer(true)}
+              />
+            )}
+
+            {showEmojiContainer && (
+              <IoCloseCircle
+                className={styles.emojiIcon}
+                onClick={() => setShowEmojiContainer(false)}
+              />
+            )}
+          </span>
+          <animated.div
+            className={styles.emojiContainer}
+            style={{ ...emojiAreaStyle }}
+          >
+            <EmojiPickerCustom
+              show={true}
+              onEmojiClick={(emoji) =>
+                handleChangeTextarea(`${messageInput}${emoji}`)
+              }
+            />
+          </animated.div>
         </div>
-
-        {!showEmojiContainer && (
-          <IoHappyOutline
-            className={styles.emojiIcon}
-            onClick={() => setShowEmojiContainer(true)}
-          />
-        )}
-
-        {showEmojiContainer && (
-          <IoCloseCircle
-            className={styles.emojiIcon}
-            onClick={() => setShowEmojiContainer(false)}
-          />
-        )}
 
         <LimitedTextarea
           text={messageInput}
@@ -123,13 +136,15 @@ export const MessageComposer = ({
         />
       </div>
 
-      <animated.button
-        className={styles.btnSendMessage}
-        style={{ ...btnSendStyle }}
-        onClick={() => handleSendNote(messageInput)}
-      >
-        <IoSendSharp className={styles.sendIcon} />
-      </animated.button>
+      <div className={styles.containerBtnSend}>
+        <animated.button
+          className={styles.btnSendMessage}
+          style={{ ...btnSendStyle }}
+          onClick={() => handleSendNote(messageInput)}
+        >
+          <IoSendSharp className={styles.sendIcon} />
+        </animated.button>
+      </div>
     </animated.div>
   );
 };

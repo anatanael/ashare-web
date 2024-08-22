@@ -2,25 +2,27 @@
 
 .container {
   display: grid;
-  overflow: hidden;
 
   background-color: $primary-color;
 
   padding: 12px;
   border-radius: 0;
-  align-items: center;
 }
 
 .messageContainer {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
 }
 
+.emojiArea {
+  position: relative;
+}
+
 .emojiContainer {
-  position: fixed;
+  position: absolute;
   bottom: 48px;
-  left: 16px;
+  z-index: 20;
 }
 
 .emojiIcon {
@@ -32,6 +34,14 @@
 .messageInput {
   padding: 8px;
   max-height: 300px;
+}
+
+.containerBtnSend {
+  overflow: hidden;
+}
+
+.btnSendMessage {
+  position: relative;
 }
 
 .sendIcon {
