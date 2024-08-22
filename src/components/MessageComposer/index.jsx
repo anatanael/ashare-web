@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { IoSendSharp } from "react-icons/io5";
+import { IoCloseCircle, IoHappyOutline, IoSendSharp } from "react-icons/io5";
 import { animated, useSpring } from "react-spring";
 
 import {
@@ -9,6 +9,7 @@ import {
   styleShowBtnSend,
 } from "./animation.styles";
 import styles from "./styles.module.scss";
+import { EmojiPickerCustom } from "../EmojiPicker";
 
 import { LimitedTextarea } from "@/components/LimitedTextarea";
 
@@ -18,6 +19,8 @@ export const MessageComposer = ({
   notifyNewNote = false,
 }) => {
   const [messageInput, setMessageInput] = useState("");
+  const [showEmojiContainer, setShowEmojiContainer] = useState(false);
+
   const messageInputTrim = messageInput.trim();
 
   const containerRef = useRef(null);
@@ -43,10 +46,12 @@ export const MessageComposer = ({
         }
       }
     }
+
+    setShowEmojiContainer(false);
   };
 
-  const handleChangeTextarea = (e) => {
-    setMessageInput(e.target.value);
+  const handleChangeTextarea = (text) => {
+    setMessageInput(text);
   };
 
   const handleKeyDown = (e) => {
@@ -55,6 +60,20 @@ export const MessageComposer = ({
       handleSendNote(messageInput);
     }
   };
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setShowEmojiContainer(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   useEffect(() => {
     const existsBreakLine = messageInput.includes("\n");
@@ -72,12 +91,37 @@ export const MessageComposer = ({
       style={{ ...containerStyle }}
       ref={containerRef}
     >
-      <LimitedTextarea
-        text={messageInput}
-        changeText={(e) => handleChangeTextarea(e)}
-        handleKeyDown={handleKeyDown}
-        className={styles.messageInput}
-      />
+      <div className={styles.messageContainer}>
+        <div className={styles.emojiContainer}>
+          <EmojiPickerCustom
+            show={showEmojiContainer}
+            onEmojiClick={(emoji) =>
+              handleChangeTextarea(`${messageInput}${emoji}`)
+            }
+          />
+        </div>
+
+        {!showEmojiContainer && (
+          <IoHappyOutline
+            className={styles.emojiIcon}
+            onClick={() => setShowEmojiContainer(true)}
+          />
+        )}
+
+        {showEmojiContainer && (
+          <IoCloseCircle
+            className={styles.emojiIcon}
+            onClick={() => setShowEmojiContainer(false)}
+          />
+        )}
+
+        <LimitedTextarea
+          text={messageInput}
+          changeText={(e) => handleChangeTextarea(e.target.value)}
+          handleKeyDown={handleKeyDown}
+          className={styles.messageInput}
+        />
+      </div>
 
       <animated.button
         className={styles.btnSendMessage}

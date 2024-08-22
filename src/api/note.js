@@ -3,7 +3,7 @@ import { IS_DEV } from "@/global/constants";
 
 export const createNotePublic = async (text) => {
   try {
-    const response = await api.post("/public/note", {
+    const response = await api.post("/free/note", {
       text,
     });
 
@@ -22,7 +22,7 @@ export const createNotePublic = async (text) => {
 };
 export const getNotesPublic = async () => {
   try {
-    const response = await api.get("/public/note");
+    const response = await api.get("/free/note");
     const responseData = response.data.notes;
     if (Array.isArray(responseData)) {
       return responseData;
@@ -38,7 +38,7 @@ export const getNotesPublic = async () => {
 
 export const deleteNotePublic = async (idNote) => {
   try {
-    await api.delete(`/public/note/${idNote}`);
+    await api.delete(`/free/note/${idNote}`);
 
     return true;
   } catch (err) {

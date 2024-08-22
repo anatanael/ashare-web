@@ -11,6 +11,24 @@
   align-items: center;
 }
 
+.messageContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.emojiContainer {
+  position: fixed;
+  bottom: 48px;
+  left: 16px;
+}
+
+.emojiIcon {
+  font-size: 32px;
+  color: rgba($color: #fff, $alpha: 0.5);
+  cursor: pointer;
+}
+
 .messageInput {
   padding: 8px;
   max-height: 300px;
