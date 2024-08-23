@@ -22,9 +22,11 @@ export const styleContainerHideBtnSend = {
 export const styleShowAreaEmoji = {
   opacity: "1",
   left: "8px",
+  display: "block",
 };
 
 export const styleHideAreaEmoji = {
   opacity: "0",
   left: "-500px",
+  display: "none",
 };
