@@ -122,7 +122,9 @@ export const MessageComposer = ({
             <EmojiPickerCustom
               show={true}
               onEmojiClick={(emoji) =>
-                handleChangeTextarea(`${messageInput}${emoji}`)
+                setMessageInput(
+                  (prevMessageInput) => `${prevMessageInput}${emoji}`,
+                )
               }
             />
           </animated.div>
