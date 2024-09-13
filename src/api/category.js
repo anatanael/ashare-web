@@ -51,7 +51,7 @@ export const updateCategoryImageApi = async (idCategory, picture) => {
 
   try {
     const response = await api.post(
-      `/user/category/${idCategory}/image`,
+      `/category/${idCategory}/updateCover`,
       formData,
       {
         headers: {

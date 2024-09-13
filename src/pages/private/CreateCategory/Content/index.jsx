@@ -74,8 +74,8 @@ export const Content = ({ classNameWrap = "" }) => {
     appCreateCategoryAndSelect(category);
 
     if (picture) {
-      updateCategoryImageApi(category.id, picture).then((e) => {
-        appChangeImageCategory(category.id, e.urlImage);
+      updateCategoryImageApi(category.id, picture).then(({ category }) => {
+        appChangeImageCategory(category.id, category.urlImage);
       });
     }
 

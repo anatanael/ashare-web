@@ -5,23 +5,16 @@ export const ImageWithFallback = ({ src, fallbackSrc, alt, className }) => {
 
   useEffect(() => {
     const checkImage = async () => {
-      try {
-        if (!src) {
-          throw new Error("Image Not Found");
-        }
+      const img = new Image();
+      img.src = src;
 
-        const response = await fetch(src, { method: "HEAD" });
+      img.onload = () => setImageSrc(src);
+      img.onerror = () => setImageSrc(fallbackSrc);
 
-        if (response.redirected || response.status === 302) {
-          setImageSrc(fallbackSrc);
-
-          return;
-        }
-
-        setImageSrc(src);
-      } catch (error) {
-        setImageSrc(fallbackSrc);
-      }
+      return () => {
+        img.onload = null;
+        img.onerror = null;
+      };
     };
 
     checkImage();
