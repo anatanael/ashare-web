@@ -100,7 +100,21 @@ export const MessageComposer = ({
     >
       <div className={styles.messageContainer}>
         <div className={styles.emojiArea}>
-          <span className="emojiButton">
+          <animated.div
+            className={styles.emojiContainer}
+            style={{ ...emojiAreaStyle }}
+          >
+            <EmojiPickerCustom
+              show={true}
+              onEmojiClick={(emoji) =>
+                setMessageInput(
+                  (prevMessageInput) => `${prevMessageInput}${emoji}`,
+                )
+              }
+            />
+          </animated.div>
+
+          <span>
             {!showEmojiContainer && (
               <IoHappyOutline
                 className={styles.emojiIcon}
@@ -115,19 +129,6 @@ export const MessageComposer = ({
               />
             )}
           </span>
-          <animated.div
-            className={styles.emojiContainer}
-            style={{ ...emojiAreaStyle }}
-          >
-            <EmojiPickerCustom
-              show={true}
-              onEmojiClick={(emoji) =>
-                setMessageInput(
-                  (prevMessageInput) => `${prevMessageInput}${emoji}`,
-                )
-              }
-            />
-          </animated.div>
         </div>
 
         <LimitedTextarea

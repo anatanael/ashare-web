@@ -51,6 +51,10 @@ export const PrivateProvider = ({ children }) => {
   };
 
   const appChangeImageCategory = async (categoryId, imageUrl) => {
+    if (!categoryId) {
+      return false;
+    }
+
     setAppCategories((prevCategories) =>
       prevCategories.map((category) => {
         if (category.id === categoryId) {
@@ -87,9 +91,7 @@ export const PrivateProvider = ({ children }) => {
         (category) => category.id === appCategorySelected.id,
       );
 
-      if (!categoryById) {
-        setAppCategorySelected(null);
-      }
+      setAppCategorySelected(categoryById ?? null);
     }
   }, [appCategories]);
 

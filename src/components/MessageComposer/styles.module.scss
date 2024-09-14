@@ -11,17 +11,19 @@
 
 .messageContainer {
   display: flex;
-  align-items: flex-start;
+
   gap: 8px;
 }
 
 .emojiArea {
+  display: flex;
+  align-items: flex-end;
   position: relative;
 }
 
 .emojiContainer {
   position: absolute;
-  bottom: 48px;
+  bottom: 100%;
   z-index: 20;
 }
 
