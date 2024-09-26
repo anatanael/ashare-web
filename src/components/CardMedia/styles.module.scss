@@ -1,5 +1,31 @@
 @import "src/global/global";
 
+.bgCardMedia {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  background-color: transparent;
+  cursor: default;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.bgCardMedia.selected {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 8px;
+}
+
+.bgCardMedia.modeSelection {
+  cursor: pointer;
+}
+
+.bgCardMedia.modeSelection:hover:not(.selected) {
+  background-color: rgba(255, 255, 255, 0.1);
+  opacity: 0.5 !important;
+  cursor: pointer;
+}
+
 .cardContainer {
   background-color: $accent-color;
   color: #000;
@@ -8,6 +34,7 @@
   max-width: 100%;
 
   padding: 4px 8px;
+  padding-top: 12px;
   border-radius: 8px;
 
   text-align: right;
@@ -20,10 +47,6 @@
   white-space: "pre-wrap";
 }
 
-.cardFooter {
-  font-size: 0.85rem;
-}
-
 .cardContent::selection,
 .cardFooter::selection,
 .cardContent a::selection {
@@ -31,7 +54,7 @@
 }
 
 .bottom {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
 }
 
 .bottom::selection {

@@ -7,7 +7,7 @@ import styles from "./styles.module.scss";
 
 import { saveCategoryApi, updateCategoryImageApi } from "@/api/category";
 import { ImageWithFallback } from "@/components/ImageWithFallback";
-import { usePrivateContext } from "@/context/Private";
+import { usePrivateContext } from "@/context/private";
 import { DEFAULT_IMG_CATEGORY } from "@/global/constants";
 
 const formCategoryInitialState = {

@@ -1,0 +1,37 @@
+@import "src/global/global";
+
+.container {
+  display: flex;
+  justify-content: center;
+
+  height: 100%;
+  padding: 12px;
+}
+
+.menu {
+  border-radius: 8px;
+  background-color: $primary-color;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: fit-content;
+  // min-width: 400px;
+}
+
+.clearSelection {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.iconClose,
+.iconDeleteAll {
+  font-size: 24px;
+}
+
+.iconDeleteAll {
+  color: rgba(255, 0, 0, 0.5);
+}

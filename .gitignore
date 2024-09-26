@@ -27,7 +27,7 @@ chrome-user-data
 .env
 .env.development
 .env.production
-.env.testing
+.env.staging
 
 temp
 

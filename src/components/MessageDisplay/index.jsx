@@ -10,7 +10,6 @@ import { TYPE_MEDIA } from "@/global/constants";
 
 export const MessageDisplay = ({
   notes,
-  notifyDelete,
   classNameWrap = "",
   containerRef = null,
 }) => {
@@ -19,6 +18,8 @@ export const MessageDisplay = ({
   const styleListItem = {
     display: "flex",
     justifyContent: "flex-end",
+    width: "100%",
+    padding: "4px 0px",
   };
 
   const combinedAndSortedItems = [...notes].sort(
@@ -28,7 +29,7 @@ export const MessageDisplay = ({
 
   return (
     <div className={classNameContainer} ref={containerRef}>
-      <List>
+      <List style={{ width: "100%" }}>
         <TransitionGroup>
           {combinedAndSortedItems.map((item) => (
             <Collapse key={item.id}>
@@ -37,7 +38,7 @@ export const MessageDisplay = ({
                   id={item.id}
                   date={item.createdAt}
                   text={item.text}
-                  notifyDelete={notifyDelete}
+                  selected={item.selected}
                   typeMedia={TYPE_MEDIA.NOTE}
                 />
               </ListItem>

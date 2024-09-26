@@ -1,31 +1,56 @@
 @import "src/global/global";
 
+.toggle {
+  cursor: pointer;
+}
+
+.dropdown {
+  display: inline-block;
+}
+
 .listMenu {
   position: absolute;
   top: 32px;
   right: 0;
+
+  width: max-content;
+
   border: 2px solid $bg-primary;
   background-color: $primary-color;
-  width: 160px;
+
   border-radius: 8px;
   font-size: 16px;
   z-index: 3;
 
   display: flex;
   flex-direction: column;
+
   gap: 4px;
   overflow: hidden;
 }
 
 .listMenu > * {
   cursor: pointer;
+  width: 100%;
 }
 
-.listMenu * {
+.listItem {
   color: $text-color;
+  display: flex;
+  align-items: center;
+  gap: 4px;
   padding: 8px;
 }
 
-.listMenu *:hover {
+.listItem:hover {
   background-color: rgb($bg-primary, 0.5);
+}
+
+.listItem {
+  display: flex;
+}
+
+.listItem,
+.listItem > * {
+  font-size: 16px;
 }

@@ -11,15 +11,14 @@ import {
   styleShowBtnSend,
 } from "./animation.styles";
 import styles from "./styles.module.scss";
+import { useGlobalContext } from "../../context/global";
 import { EmojiPickerCustom } from "../EmojiPicker";
 
 import { LimitedTextarea } from "@/components/LimitedTextarea";
 
-export const MessageComposer = ({
-  classNameWrap = "",
-  createNewNote,
-  notifyNewNote = false,
-}) => {
+export const MessageComposer = ({ classNameWrap = "", createNewNote }) => {
+  const { appNotifyNewNote } = useGlobalContext();
+
   const [messageInput, setMessageInput] = useState("");
   const [showEmojiContainer, setShowEmojiContainer] = useState(false);
 
@@ -47,9 +46,7 @@ export const MessageComposer = ({
         document.activeElement.blur();
         setMessageInput("");
 
-        if (notifyNewNote) {
-          notifyNewNote(noteDb);
-        }
+        appNotifyNewNote(noteDb);
       }
     }
 

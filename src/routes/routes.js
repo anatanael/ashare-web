@@ -2,8 +2,9 @@ import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 
 import { PrivateRoute } from "./PrivateRoute";
 import { PublicRoute } from "./PublicRoute";
+import { GlobalProvider } from "../context/global";
 
-import { PrivateProvider } from "@/context/Private";
+import { PrivateProvider } from "@/context/private";
 import { CreateCategory } from "@/pages/private/CreateCategory";
 import { Home as HomePrivate } from "@/pages/private/Home";
 import { Home as HomePublic } from "@/pages/public/Home";
@@ -16,7 +17,9 @@ const RoutesApp = () => (
       <Route
         element={
           <PublicRoute>
-            <Outlet />
+            <GlobalProvider>
+              <Outlet />
+            </GlobalProvider>
           </PublicRoute>
         }
       >
@@ -28,9 +31,11 @@ const RoutesApp = () => (
       <Route
         element={
           <PrivateRoute>
-            <PrivateProvider>
-              <Outlet />
-            </PrivateProvider>
+            <GlobalProvider>
+              <PrivateProvider>
+                <Outlet />
+              </PrivateProvider>
+            </GlobalProvider>
           </PrivateRoute>
         }
       >

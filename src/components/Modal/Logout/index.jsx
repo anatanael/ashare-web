@@ -24,7 +24,9 @@ export const ModalLogout = ({ componentOpen }) => {
 
   return (
     <>
-      <div onClick={handleOpen}>{componentOpen}</div>
+      <span className={styles.openModal} onClick={handleOpen}>
+        {componentOpen}
+      </span>
 
       <Modal open={open} onClose={handleClose} className={styles.page}>
         <div className={styles.container}>

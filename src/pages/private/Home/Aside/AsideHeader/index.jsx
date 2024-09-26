@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import styles from "./styles.module.scss";
 
-import Dropdown from "@/components/Dropdown";
+import Dropdown, { DropdownItem } from "@/components/Dropdown";
 import { ModalLogout } from "@/components/Modal/Logout";
 
 const defaultImgProfile = "/assets/images/userProfileDefault.png";
@@ -35,9 +35,18 @@ export const AsideHeader = () => {
       </div>
 
       <div className={styles.menu}>
-        <Dropdown toggle={IconMenu} className={styles.iconMenu}>
-          <li onClick={goPageCreateCategory}>Nova Categoria</li>
-          <ModalLogout componentOpen={"Sair"} />
+        <Dropdown
+          toggle={IconMenu}
+          classNameToggle={styles.iconMenu}
+          alignRight
+        >
+          <DropdownItem onClick={goPageCreateCategory}>
+            Nova Categoria
+          </DropdownItem>
+
+          <DropdownItem>
+            <ModalLogout componentOpen={"Sair"} />
+          </DropdownItem>
         </Dropdown>
       </div>
     </div>

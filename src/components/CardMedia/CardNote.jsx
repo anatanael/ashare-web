@@ -37,7 +37,7 @@ function wrapUrlsWithAnchorTags(text) {
   return lineFormatted;
 }
 
-export const CardNote = ({ id, date, text, notifyDelete }) => {
+export const CardNote = ({ id, date, text, selected }) => {
   const textFormatted = replaceSpacesWithNbsp(text);
 
   const lines = textFormatted.split("\n");
@@ -57,7 +57,8 @@ export const CardNote = ({ id, date, text, notifyDelete }) => {
     <CardMedia
       id={id}
       date={date}
-      notifyDelete={notifyDelete}
+      text={text}
+      selected={selected}
       typeMedia={TYPE_MEDIA.NOTE}
     >
       {textFormattedCard}

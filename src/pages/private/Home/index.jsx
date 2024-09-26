@@ -6,7 +6,7 @@ import { Main } from "./Main";
 import styles from "./styles.module.scss";
 
 import { ContainerScreen } from "@/components/ContainerScreen";
-import { usePrivateContext } from "@/context/Private";
+import { usePrivateContext } from "@/context/private";
 
 export const Home = () => {
   const {

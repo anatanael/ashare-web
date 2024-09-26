@@ -2,7 +2,7 @@
 
 $size-header: 36px;
 $size-content: 1fr;
-$size-bottom: 64px;
+$size-bottom: auto;
 
 .container {
   width: 100vw;
@@ -17,7 +17,7 @@ $size-bottom: 64px;
   grid-template-rows:
     $size-header
     $size-content
-    auto;
+    $size-bottom;
 }
 
 .header {
@@ -26,6 +26,8 @@ $size-bottom: 64px;
 
 .content {
   grid-area: content;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .bottom {
@@ -37,10 +39,10 @@ $size-bottom: 64px;
     grid-template-rows:
       $size-header
       $size-content
-      auto;
+      $size-bottom;
   }
 
-  .bottom {
+  .bottomResize {
     margin: 0px 16px 16px 16px;
     width: calc(100% - 32px);
     border-radius: 8px !important;

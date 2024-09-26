@@ -3,7 +3,7 @@ import { IoArrowBackOutline } from "react-icons/io5";
 import styles from "./styles.module.scss";
 
 import { ImageWithFallback } from "@/components/ImageWithFallback";
-import { usePrivateContext } from "@/context/Private";
+import { usePrivateContext } from "@/context/private";
 import { DEFAULT_IMG_CATEGORY } from "@/global/constants";
 
 const IconReturn = ({ handleClick }) => (

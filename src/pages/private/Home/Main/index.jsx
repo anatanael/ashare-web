@@ -1,56 +1,45 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { animated, useSpring } from "react-spring";
 
+import {
+  styleHideMessageCompose,
+  styleShowMessageCompose,
+} from "./animation.styles";
 import { MainHeader } from "./MainHeader";
 import styles from "./styles.module.scss";
 
-import {
-  createNoteByCategory,
-  deleteNotePrivate,
-  getNotesByCategory,
-} from "@/api/note";
+import { createNoteByCategory, getNotesByCategory } from "@/api/note";
+import { MenuModeSelection } from "@/components/MenuModeSelection";
 import { MessageComposer } from "@/components/MessageComposer";
 import { MessageDisplay } from "@/components/MessageDisplay";
-import { usePrivateContext } from "@/context/Private";
-import { TYPE_MEDIA } from "@/global/constants";
+import { useGlobalContext } from "@/context/global";
+import { usePrivateContext } from "@/context/private";
 
 export const Main = () => {
   const { appCategorySelected } = usePrivateContext();
-
-  const [notes, setNotes] = useState([]);
+  const { appLoadNotes, appNotes, appModeMessageSelection } =
+    useGlobalContext();
 
   const scrollContentRef = useRef(null);
 
-  const notifyNewNote = (newNote) => {
-    setNotes((prevNotes) => [...prevNotes, newNote]);
+  const messageComposerStyle = useSpring(
+    !appModeMessageSelection
+      ? styleShowMessageCompose
+      : styleHideMessageCompose,
+  );
 
-    scrollContentToDown();
-  };
+  const menuSelectionStyle = useSpring(
+    appModeMessageSelection ? styleShowMessageCompose : styleHideMessageCompose,
+  );
 
   const createNewNote = async (text) => {
     return await createNoteByCategory(appCategorySelected.id, text);
   };
 
-  const scrollContentToDown = () => {
-    if (scrollContentRef.current) {
-      scrollContentRef.current.scrollTop =
-        scrollContentRef.current.scrollHeight;
-    }
-  };
-
-  const notifyDeleteMedia = async (id, typeMedia) => {
-    if (typeMedia === TYPE_MEDIA.NOTE) {
-      if (await deleteNotePrivate(id)) {
-        setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id));
-      }
-    }
-  };
-
   useEffect(() => {
     async function main() {
-      const data = await getNotesByCategory(appCategorySelected.id);
-      if (Array.isArray(data)) {
-        setNotes([...data]);
-      }
+      const dataDB = await getNotesByCategory(appCategorySelected.id);
+      appLoadNotes(dataDB);
     }
 
     if (appCategorySelected) {
@@ -65,16 +54,20 @@ export const Main = () => {
 
         <MessageDisplay
           classNameWrap={styles.content}
-          notes={notes}
-          notifyDelete={notifyDeleteMedia}
+          notes={appNotes}
           containerRef={scrollContentRef}
         />
 
-        <MessageComposer
-          classNameWrap={styles.footer}
-          createNewNote={createNewNote}
-          notifyNewNote={notifyNewNote}
-        />
+        <animated.div style={messageComposerStyle} className={styles.bottom}>
+          <MessageComposer
+            createNewNote={createNewNote}
+            classNameWrap={styles.bottomResize}
+          />
+        </animated.div>
+
+        <animated.div style={menuSelectionStyle} className={styles.bottom}>
+          <MenuModeSelection />
+        </animated.div>
       </div>
     )
   );
